@@ -1,25 +1,38 @@
 import React from 'react';
 import {
-    SafeAreaView,
     ScrollView,
     StatusBar,
     StyleSheet,
     Text,
     View,
 } from 'react-native';
+import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+
+// Redux
+import {Provider} from 'react-redux';
+import store from '@/store/';
+
+// Screens
+import Home from '@/screens/Home';
+
+const Stack = createStackNavigator();
 
 const App = () => {
     return (
-        <SafeAreaView>
+        <Provider store={store}>
             <StatusBar/>
-            <ScrollView
-                contentInsetAdjustmentBehavior="automatic"
-            >
-                <View>
-                    <Text>dsadas</Text>
-                </View>
-            </ScrollView>
-        </SafeAreaView>
+            <SafeAreaProvider>
+                <NavigationContainer>
+                    <Stack.Navigator initialRouteName="Home" screenOptions={{
+                        headerShown: false,
+                    }}>
+                        <Stack.Screen name="Home" component={Home} />
+                    </Stack.Navigator>
+                </NavigationContainer>
+            </SafeAreaProvider>
+        </Provider>
     );
 };
 
