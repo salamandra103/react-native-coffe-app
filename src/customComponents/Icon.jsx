@@ -1,5 +1,6 @@
 import React, {PropsTyp, useState, useEffect} from 'react';
 import {View, Text} from 'react-native';
+
 import PropTypes from 'prop-types';
 const Icon = (props) => {
     const [icon, setIcon] = useState(null);
@@ -38,15 +39,26 @@ const Icon = (props) => {
             path: '@/assets/images/svg/home-menu/8.svg',
             nodeElement: import('@/assets/images/svg/home-menu/8.svg'),
         },
+        {
+            path: '@/assets/images/svg/search-icon.svg',
+            nodeElement: import('@/assets/images/svg/search-icon.svg'),
+        },
+        {
+            path: '@/assets/images/svg/like-icon.svg',
+            nodeElement: import('@/assets/images/svg/like-icon.svg'),
+        },
     ];
 
     useEffect(() => {
         if (props.path) {
-            allIcons.find(_icon => _icon.path === props.path).nodeElement.then(obj => {
-                setIcon(obj.default);
-            });
+            let searchableIcon = allIcons.find(_icon => _icon.path === props.path);
+            if (searchableIcon) {
+                searchableIcon.nodeElement.then(obj => {
+                    setIcon(obj.default(props.style));
+                });
+            }
         }
-    });
+    }, []);
 
     return icon;
 };

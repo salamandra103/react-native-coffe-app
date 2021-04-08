@@ -1,17 +1,21 @@
-import React from 'react';
-import {View, Text, TextInput, StyleSheet, ScrollView, Dimensions, StatusBar} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, TextInput, StyleSheet, ScrollView, Dimensions, StatusBar, ImageBackground, Image} from 'react-native';
 
 import {connect} from 'react-redux';
 
 import MyText from '@/customComponents/MyText';
 import Icon from '@/customComponents/Icon';
 
-import IconSearchSvg from '@/assets/images/svg/search-icon.svg';
+import HomeItemBackground from '@/assets/images/home-item-background.png';
+import HomeItem from '@/assets/images/home-item.png';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const Home = () => {
+
+    const [search, setSearch] = useState('');
+
     return (
         <>
             <StatusBar backgroundColor="transparent" translucent/>
@@ -20,13 +24,17 @@ const Home = () => {
                 contentContainerStyle={style.scroll}
             >
                 <View style={style.figure1} />
+
                 <View style={style.search}>
                     <MyText style={style.search.logo}>Mall</MyText>
                     <View style={style.search.input_container}>
-                        <IconSearchSvg style={style.search.input_icon}/>
-                        <TextInput style={style.search.input_text} value={'dsadas'}/>
+                        <Icon style={style.search.input_icon} path={'@/assets/images/svg/search-icon.svg'}/>
+                        <TextInput style={style.search.input_text} onChangeText={setSearch} onSubmitEditing={(e) => {
+                            console.log(e);
+                        }} value={search} placeholder="Введите слово поиска..."/>
                     </View>
                 </View>
+
                 <View style={style.menu.list}>
                     <View style={style.menu.item}>
                         <Icon style={style.menu.icon} path="@/assets/images/svg/home-menu/1.svg"/>
@@ -61,6 +69,59 @@ const Home = () => {
                         <MyText style={style.menu.text}>All</MyText>
                     </View>
                 </View>
+
+                <View>
+                    <View style={style.caption}>
+                        <MyText style={style.text.titleBlack}>Kill Every Second</MyText>
+                        <MyText style={style.text.linkYellow}>View all</MyText>
+                    </View>
+                    <ScrollView horizontal="true" contentContainerStyle={style.items}>
+                        <View style={style.items.item}>
+                            <ImageBackground style={style.items.item.background} source={HomeItemBackground}>
+                                <Image source={HomeItem} style={style.items.item.image}/>
+                                <Text style={style.items.item.title}>Natnudo Beef</Text>
+                                <Text style={style.items.item.price}>$ 15.9/catty</Text>
+                                <View style={style.items.item.category.container}>
+                                    <Text style={style.items.item.category.text}>Parcels</Text>
+                                </View>
+                                <Icon style={style.items.item.like} path="@/assets/images/svg/like-icon.svg"/>
+                            </ImageBackground>
+                        </View>
+                        <View style={style.items.item}>
+                            <ImageBackground style={style.items.item.background} source={HomeItemBackground}>
+                                <Image source={HomeItem} style={style.items.item.image}/>
+                                <Text style={style.items.item.title}>Natnudo Beef</Text>
+                                <Text style={style.items.item.price}>$ 15.9/catty</Text>
+                                <View style={style.items.item.category.container}>
+                                    <Text style={style.items.item.category.text}>Parcels</Text>
+                                </View>
+                                <Icon style={style.items.item.like} path="@/assets/images/svg/like-icon.svg"/>
+                            </ImageBackground>
+                        </View>
+                        <View style={style.items.item}>
+                            <ImageBackground style={style.items.item.background} source={HomeItemBackground}>
+                                <Image source={HomeItem} style={style.items.item.image}/>
+                                <Text style={style.items.item.title}>Natnudo Beef</Text>
+                                <Text style={style.items.item.price}>$ 15.9/catty</Text>
+                                <View style={style.items.item.category.container}>
+                                    <Text style={style.items.item.category.text}>Parcels</Text>
+                                </View>
+                                <Icon style={style.items.item.like} path="@/assets/images/svg/like-icon.svg"/>
+                            </ImageBackground>
+                        </View>
+                        <View style={style.items.item}>
+                            <ImageBackground style={style.items.item.background} source={HomeItemBackground}>
+                                <Image source={HomeItem} style={style.items.item.image}/>
+                                <Text style={style.items.item.title}>Natnudo Beef</Text>
+                                <Text style={style.items.item.price}>$ 15.9/catty</Text>
+                                <View style={style.items.item.category.container}>
+                                    <Text style={style.items.item.category.text}>Parcels</Text>
+                                </View>
+                                <Icon style={style.items.item.like} path="@/assets/images/svg/like-icon.svg"/>
+                            </ImageBackground>
+                        </View>
+                    </ScrollView>
+                </View>
             </ScrollView>
         </>
     );
@@ -93,7 +154,6 @@ const style = StyleSheet.compose({
             position: 'absolute',
             left: 16,
             top: 9,
-
         },
         input_container: {
             backgroundColor: '#fff',
@@ -104,6 +164,7 @@ const style = StyleSheet.compose({
             borderRadius: 999,
             flexDirection: 'row',
             alignItems: 'center',
+            position: 'relative',
         },
     },
     menu: {
@@ -115,26 +176,86 @@ const style = StyleSheet.compose({
             borderBottomRightRadius: 10,
             paddingHorizontal: 20,
             paddingVertical: 15,
+            paddingBottom: 3,
             flexDirection: 'row',
             flexWrap: 'wrap',
+            marginBottom: 20,
         },
         item: {
             width: '25%',
             alignItems: 'center',
+            alignContent: 'flex-start',
             marginBottom: 12,
         },
         icon: {
             marginBottom: 5,
             maxWidth: 36,
             maxHeight: 36,
-            width: '100%',
-            height: '100%',
         },
         text: {
             fontSize: 10,
             fontWeight: '500',
             color: '#666666',
             textAlign: 'center',
+        },
+    },
+    items: {
+        marginHorizontal: -6,
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+        width: '100%',
+        item: {
+            width: 120,
+            height: 170,
+            borderRadius: 10,
+            overflow: 'hidden',
+            marginHorizontal: 6,
+            image: {
+                position: 'absolute',
+                left: 10,
+                top: 2,
+                width: '100%',
+                height: '100%',
+                resizeMode: 'contain',
+            },
+            title: {
+                color: '#fff',
+                fontSize: 12,
+                marginBottom: 3,
+            },
+            price: {
+                color: '#fff',
+                fontSize: 10,
+            },
+            like: {
+                position: 'absolute',
+                right: 16,
+                bottom: 21,
+            },
+            category: {
+                container: {
+                    position: 'absolute',
+                    left: 0,
+                    top: 0,
+                    backgroundColor: '#FFA119',
+                    borderTopLeftRadius: 10,
+                    borderBottomRightRadius: 10,
+                    paddingHorizontal: 7,
+                    paddingVertical: 2,
+                },
+                text: {
+                    fontSize: 10,
+                    color: '#fff',
+                },
+            },
+            background: {
+                flex: 1,
+                resizeMode: 'cover',
+                paddingVertical: 21,
+                paddingHorizontal: 15,
+                position: 'relative',
+                justifyContent: 'flex-end',
+            },
         },
     },
     figure1: {
@@ -150,6 +271,24 @@ const style = StyleSheet.compose({
         backgroundColor: '#6AA3C1',
         width: windowWidth * 1.5,
         height: windowWidth * 1.5,
+    },
+    text: {
+        titleBlack: {
+            color: '#303843',
+            fontWeight: '700',
+            fontSize: 16,
+        },
+        linkYellow: {
+            color: '#F5A623',
+            fontSize: 12,
+            fontWeight: '600',
+        },
+    },
+    caption: {
+        marginBottom: 11,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
     },
 });
 
