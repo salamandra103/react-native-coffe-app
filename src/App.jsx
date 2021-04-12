@@ -17,19 +17,35 @@ import store from '@/store/';
 // Screens
 import Home from '@/screens/Home';
 
-const Stack = createStackNavigator();
+const RootStack = createStackNavigator();
+const MainStack = createStackNavigator();
 
 const App = () => {
+
+
+    const MainStackScreen = () => (
+        <MainStack.Navigator initialRouteName="Home" screenOptions={{
+            headerShown: false,
+        }}>
+            <MainStack.Screen name="Home" component={Home} />
+        </MainStack.Navigator>
+    );
+
+    const ModalScreen = () => (
+        <View>
+            <Text>Модальное окно</Text>
+        </View>
+    );
+
     return (
         <Provider store={store}>
             <StatusBar/>
             <SafeAreaProvider>
                 <NavigationContainer>
-                    <Stack.Navigator initialRouteName="Home" screenOptions={{
-                        headerShown: false,
-                    }}>
-                        <Stack.Screen name="Home" component={Home} />
-                    </Stack.Navigator>
+                    <RootStack.Navigator mode="modal" initialRouteName="Modal">
+                        <RootStack.Screen name="Main" options={{headerShown: false}} component={MainStackScreen} />
+                        <RootStack.Screen name="Modal" options={{headerShown: false}} getComponent={() => require('./containers/Modal').default} />
+                    </RootStack.Navigator>
                 </NavigationContainer>
             </SafeAreaProvider>
         </Provider>
