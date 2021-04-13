@@ -11,7 +11,7 @@ import HomeItem from '@/assets/images/home-item.png';
 import HomeItem2 from '@/assets/images/home-item-2.png';
 
 import {style} from '@/assets/styles/Home.js';
-import {styleCaption} from '@/assets/styles/Base.js';
+import {styleCaption, styleScroll} from '@/assets/styles/Base.js';
 
 const Home = ({navigation}) => {
 
@@ -24,72 +24,72 @@ const Home = ({navigation}) => {
             <StatusBar backgroundColor="transparent" translucent/>
             <ScrollView
                 contentInsetAdjustmentBehavior="automatic"
-                contentContainerStyle={style.scroll}
+                contentContainerStyle={style.scrollContainer}
             >
                 <View style={style.figure1} />
 
-                <View style={style.search}>
-                    <MyText style={style.search.logo}>Mall</MyText>
-                    <View style={style.search.input_container}>
-                        <Icon style={style.search.input_icon} path={'@/assets/images/svg/search-icon.svg'}/>
-                        <TextInput style={style.search.input_text} onChangeText={setSearch} onSubmitEditing={(e) => {
+                <View style={style.searchContainer}>
+                    <MyText style={style.searchLogo}>Mall</MyText>
+                    <View style={style.searchInputContainer}>
+                        <Icon style={style.searchInputIcon} path={'@/assets/images/svg/search-icon.svg'}/>
+                        <TextInput style={style.searchInputText} onChangeText={setSearch} onSubmitEditing={(e) => {
                             console.log(e);
                         }} value={search} placeholder="Введите слово поиска..."/>
                     </View>
                 </View>
 
-                <View style={style.menu.list}>
-                    <View style={style.menu.item}>
-                        <Icon style={style.menu.icon} path="@/assets/images/svg/home-menu/1.svg"/>
-                        <MyText style={style.menu.text}>VIP</MyText>
+                <View style={style.menuContainer}>
+                    <View style={style.menuItem}>
+                        <Icon style={style.menuIcon} path="@/assets/images/svg/home-menu/1.svg"/>
+                        <MyText style={style.menuText}>VIP</MyText>
                     </View>
-                    <View style={style.menu.item}>
-                        <Icon style={style.menu.icon} path="@/assets/images/svg/home-menu/2.svg"/>
-                        <MyText style={style.menu.text}>Seasonal Fresh</MyText>
+                    <View style={style.menuItem}>
+                        <Icon style={style.menuIcon} path="@/assets/images/svg/home-menu/2.svg"/>
+                        <MyText style={style.menuText}>Seasonal Fresh</MyText>
                     </View>
-                    <View style={style.menu.item}>
-                        <Icon style={style.menu.icon} path="@/assets/images/svg/home-menu/3.svg"/>
-                        <MyText style={style.menu.text}>Baking</MyText>
+                    <View style={style.menuItem}>
+                        <Icon style={style.menuIcon} path="@/assets/images/svg/home-menu/3.svg"/>
+                        <MyText style={style.menuText}>Baking</MyText>
                     </View>
-                    <View style={style.menu.item}>
-                        <Icon style={style.menu.icon} path="@/assets/images/svg/home-menu/4.svg"/>
-                        <MyText style={style.menu.text}>Kitchen Appliances</MyText>
+                    <View style={style.menuItem}>
+                        <Icon style={style.menuIcon} path="@/assets/images/svg/home-menu/4.svg"/>
+                        <MyText style={style.menuText}>Kitchen Appliances</MyText>
                     </View>
-                    <View style={style.menu.item}>
-                        <Icon style={style.menu.icon} path="@/assets/images/svg/home-menu/5.svg"/>
-                        <MyText style={style.menu.text}>Grain</MyText>
+                    <View style={style.menuItem}>
+                        <Icon style={style.menuIcon} path="@/assets/images/svg/home-menu/5.svg"/>
+                        <MyText style={style.menuText}>Grain</MyText>
                     </View>
-                    <View style={style.menu.item}>
-                        <Icon style={style.menu.icon} path="@/assets/images/svg/home-menu/6.svg"/>
-                        <MyText style={style.menu.text}>Health</MyText>
+                    <View style={style.menuItem}>
+                        <Icon style={style.menuIcon} path="@/assets/images/svg/home-menu/6.svg"/>
+                        <MyText style={style.menuText}>Health</MyText>
                     </View>
-                    <View style={style.menu.item}>
-                        <Icon style={style.menu.icon} path="@/assets/images/svg/home-menu/7.svg"/>
-                        <MyText style={style.menu.text}>Tea Drinking</MyText>
+                    <View style={style.menuItem}>
+                        <Icon style={style.menuIcon} path="@/assets/images/svg/home-menu/7.svg"/>
+                        <MyText style={style.menuText}>Tea Drinking</MyText>
                     </View>
-                    <View style={style.menu.item}>
-                        <Icon style={style.menu.icon} path="@/assets/images/svg/home-menu/8.svg"/>
-                        <MyText style={style.menu.text}>All</MyText>
+                    <View style={style.menuItem}>
+                        <Icon style={style.menuIcon} path="@/assets/images/svg/home-menu/8.svg"/>
+                        <MyText style={style.menuText}>All</MyText>
                     </View>
                 </View>
 
                 <View>
-                    <View style={styleCaption}>
+                    <View style={styleCaption.container}>
                         <MyText style={styleCaption.title}>Kill Every Second</MyText>
                         <MyText style={styleCaption.link}>View all</MyText>
                     </View>
-                    <ScrollView horizontal={true} style={style.items_main.container} contentContainerStyle={style.items_main} showsHorizontalScrollIndicator={false}>
+                    <ScrollView horizontal={true} style={style.itemsMainScroll} contentContainerStyle={style.itemsMainContainer} showsHorizontalScrollIndicator={false}>
                         {
                             arr.map((item, index) => (
-                                <View style={style.items_main.item} key={index}>
-                                    <ImageBackground style={style.items_main.item.background} source={HomeItemBackground}>
-                                        <Image source={HomeItem} style={style.items_main.item.image}/>
-                                        <MyText style={style.items_main.item.title}>Natnudo Beef</MyText>
-                                        <MyText style={style.items_main.item.price}>$ 15.9/catty</MyText>
-                                        <View style={style.items_main.item.category.container}>
-                                            <MyText style={style.items_main.item.category.text}>Parcels</MyText>
+                                <View style={style.itemsMainItem} key={index}>
+                                    <ImageBackground style={style.itemsMainItemBackground} source={HomeItemBackground}>
+                                        <Image source={HomeItem} style={style.itemsMainItemImage}/>
+                                        <MyText style={style.itemsMainItemTitle}>Natnudo Beef</MyText>
+                                        <MyText style={style.itemsMainItemPrice}>$ 15.9/catty</MyText>
+                                        <View style={style.itemsMainItemCategoryBlock}>
+                                            <MyText style={style.itemsMainItemCategoryText}>Parcels</MyText>
                                         </View>
-                                        <Icon style={style.items_main.item.like} path="@/assets/images/svg/like-icon.svg"/>
+                                        <Icon style={style.itemsMainItemLike} path="@/assets/images/svg/like-icon.svg"/>
                                     </ImageBackground>
                                 </View>
                             ))
@@ -98,20 +98,20 @@ const Home = ({navigation}) => {
                 </View>
 
                 <View>
-                    <View style={styleCaption}>
+                    <View style={styleCaption.container}>
                         <MyText style={styleCaption.title}>Weekly Bursts</MyText>
                         <MyText style={styleCaption.link}>View all</MyText>
                     </View>
-                    <ScrollView horizontal={true} style={style.items_second.container} contentContainerStyle={style.items_second} showsHorizontalScrollIndicator={false}>
+                    <ScrollView horizontal={true} style={style.itemsSecondScroll} contentContainerStyle={style.itemsSecondContainer} showsHorizontalScrollIndicator={false}>
                         {
                             arr.map((item, index) => (
                                 <TouchableWithoutFeedback onPress={() => {
                                     navigation.navigate('Modal');
                                 }} key={index}>
-                                    <View style={style.items_second.item}>
-                                        <ImageBackground style={style.items_second.item.background} source={HomeItem2}>
-                                            <MyText style={style.items_second.item.title}>Gala</MyText>
-                                            <MyText style={style.items_second.item.price}>$ 16.9/catty</MyText>
+                                    <View style={style.itemsSecondItem}>
+                                        <ImageBackground style={style.itemsSecondItemBackground} source={HomeItem2}>
+                                            <MyText style={style.itemsSecondItemTitle}>Gala</MyText>
+                                            <MyText style={style.itemsSecondItemPrice}>$ 16.9/catty</MyText>
                                         </ImageBackground>
                                     </View>
                                 </TouchableWithoutFeedback>

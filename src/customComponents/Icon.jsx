@@ -47,6 +47,10 @@ const Icon = (props) => {
             path: '@/assets/images/svg/like-icon.svg',
             nodeElement: import('@/assets/images/svg/like-icon.svg'),
         },
+        {
+            path: '@/assets/images/svg/right-arrow-icon.svg',
+            nodeElement: import('@/assets/images/svg/right-arrow-icon.svg'),
+        },
     ];
 
     useEffect(() => {
@@ -58,7 +62,7 @@ const Icon = (props) => {
                 });
             }
         }
-    }, []);
+    });
 
     return icon;
 };

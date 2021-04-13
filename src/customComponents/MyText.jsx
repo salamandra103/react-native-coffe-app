@@ -4,8 +4,13 @@ import PropTypes from 'prop-types';
 
 const MyText = (props) => {
     let fontFamily = '';
-    if (props.style && props.style.fontWeight) {
-        switch (props.style.fontWeight) {
+    let fontWeight = '400';
+    if (Array.isArray(props.style)) {
+        fontWeight = props.style.find(item => item.fontWeight).fontWeight;
+    }
+    if (props.style) {
+
+        switch (props.style.fontWeight ? props.style.fontWeight : fontWeight) {
         case '100':
             fontFamily = 'Dosis-Thin';
             break;
@@ -33,12 +38,15 @@ const MyText = (props) => {
     }
 
     return (
-        <Text style={[{...props.style}, {fontFamily: fontFamily || 'Dosis-Regular'}]}>{props.children}</Text>
+        <Text style={[props.style, {fontFamily: fontFamily || 'Dosis-Regular'}]}>{props.children}</Text>
     );
 };
 
 MyText.propTypes = {
-    style: PropTypes.object,
+    style: PropTypes.oneOfType([
+        PropTypes.array,
+        PropTypes.object,
+    ]),
     children: PropTypes.string,
     alternative: PropTypes.bool,
 };

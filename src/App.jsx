@@ -31,18 +31,12 @@ const App = () => {
         </MainStack.Navigator>
     );
 
-    const ModalScreen = () => (
-        <View>
-            <Text>Модальное окно</Text>
-        </View>
-    );
-
     return (
         <Provider store={store}>
             <StatusBar/>
             <SafeAreaProvider>
                 <NavigationContainer>
-                    <RootStack.Navigator mode="modal" initialRouteName="Modal">
+                    <RootStack.Navigator mode="modal" initialRouteName="Home">
                         <RootStack.Screen name="Main" options={{headerShown: false}} component={MainStackScreen} />
                         <RootStack.Screen name="Modal" options={{headerShown: false}} getComponent={() => require('./containers/Modal').default} />
                     </RootStack.Navigator>
