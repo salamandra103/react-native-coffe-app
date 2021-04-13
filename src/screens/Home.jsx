@@ -11,7 +11,7 @@ import HomeItem from '@/assets/images/home-item.png';
 import HomeItem2 from '@/assets/images/home-item-2.png';
 
 import {style} from '@/assets/styles/Home.js';
-import {styleCaption, styleScroll} from '@/assets/styles/Base.js';
+import {styleCaption, styleScroll, styleGrid} from '@/assets/styles/Base.js';
 
 const Home = ({navigation}) => {
 
@@ -24,7 +24,7 @@ const Home = ({navigation}) => {
             <StatusBar backgroundColor="transparent" translucent/>
             <ScrollView
                 contentInsetAdjustmentBehavior="automatic"
-                contentContainerStyle={style.scrollContainer}
+                contentContainerStyle={[style.scrollContainer,styleScroll.container]}
             >
                 <View style={style.figure1} />
 
@@ -73,52 +73,50 @@ const Home = ({navigation}) => {
                     </View>
                 </View>
 
-                <View>
-                    <View style={styleCaption.container}>
-                        <MyText style={styleCaption.title}>Kill Every Second</MyText>
-                        <MyText style={styleCaption.link}>View all</MyText>
-                    </View>
-                    <ScrollView horizontal={true} style={style.itemsMainScroll} contentContainerStyle={style.itemsMainContainer} showsHorizontalScrollIndicator={false}>
-                        {
-                            arr.map((item, index) => (
-                                <View style={style.itemsMainItem} key={index}>
-                                    <ImageBackground style={style.itemsMainItemBackground} source={HomeItemBackground}>
-                                        <Image source={HomeItem} style={style.itemsMainItemImage}/>
-                                        <MyText style={style.itemsMainItemTitle}>Natnudo Beef</MyText>
-                                        <MyText style={style.itemsMainItemPrice}>$ 15.9/catty</MyText>
-                                        <View style={style.itemsMainItemCategoryBlock}>
-                                            <MyText style={style.itemsMainItemCategoryText}>Parcels</MyText>
-                                        </View>
-                                        <Icon style={style.itemsMainItemLike} path="@/assets/images/svg/like-icon.svg"/>
-                                    </ImageBackground>
-                                </View>
-                            ))
-                        }
-                    </ScrollView>
+                <View style={[styleCaption.container, styleGrid.container]}>
+                    <MyText style={styleCaption.title}>Kill Every Second</MyText>
+                    <MyText style={styleCaption.link}>View all</MyText>
                 </View>
 
-                <View>
-                    <View style={styleCaption.container}>
-                        <MyText style={styleCaption.title}>Weekly Bursts</MyText>
-                        <MyText style={styleCaption.link}>View all</MyText>
-                    </View>
-                    <ScrollView horizontal={true} style={style.itemsSecondScroll} contentContainerStyle={style.itemsSecondContainer} showsHorizontalScrollIndicator={false}>
-                        {
-                            arr.map((item, index) => (
-                                <TouchableWithoutFeedback onPress={() => {
-                                    navigation.navigate('Modal');
-                                }} key={index}>
-                                    <View style={style.itemsSecondItem}>
-                                        <ImageBackground style={style.itemsSecondItemBackground} source={HomeItem2}>
-                                            <MyText style={style.itemsSecondItemTitle}>Gala</MyText>
-                                            <MyText style={style.itemsSecondItemPrice}>$ 16.9/catty</MyText>
-                                        </ImageBackground>
+                <ScrollView horizontal={true} style={style.itemsMainScroll} contentContainerStyle={style.itemsMainContainer} showsHorizontalScrollIndicator={false}>
+                    {
+                        arr.map((item, index) => (
+                            <View style={style.itemsMainItem} key={index}>
+                                <ImageBackground style={style.itemsMainItemBackground} source={HomeItemBackground}>
+                                    <Image source={HomeItem} style={style.itemsMainItemImage}/>
+                                    <MyText style={style.itemsMainItemTitle}>Natnudo Beef</MyText>
+                                    <MyText style={style.itemsMainItemPrice}>$ 15.9/catty</MyText>
+                                    <View style={style.itemsMainItemCategoryBlock}>
+                                        <MyText style={style.itemsMainItemCategoryText}>Parcels</MyText>
                                     </View>
-                                </TouchableWithoutFeedback>
-                            ))
-                        }
-                    </ScrollView>
+                                    <Icon style={style.itemsMainItemLike} path="@/assets/images/svg/like-icon.svg"/>
+                                </ImageBackground>
+                            </View>
+                        ))
+                    }
+                </ScrollView>
+
+                <View style={[styleCaption.container, styleGrid.container]}>
+                    <MyText style={styleCaption.title}>Weekly Bursts</MyText>
+                    <MyText style={styleCaption.link}>View all</MyText>
                 </View>
+
+                <ScrollView horizontal={true} style={style.itemsSecondScroll} contentContainerStyle={style.itemsSecondContainer} showsHorizontalScrollIndicator={false}>
+                    {
+                        arr.map((item, index) => (
+                            <TouchableWithoutFeedback onPress={() => {
+                                navigation.navigate('Modal');
+                            }} key={index}>
+                                <View style={style.itemsSecondItem}>
+                                    <ImageBackground style={style.itemsSecondItemBackground} source={HomeItem2}>
+                                        <MyText style={style.itemsSecondItemTitle}>Gala</MyText>
+                                        <MyText style={style.itemsSecondItemPrice}>$ 16.9/catty</MyText>
+                                    </ImageBackground>
+                                </View>
+                            </TouchableWithoutFeedback>
+                        ))
+                    }
+                </ScrollView>
             </ScrollView>
         </>
     );

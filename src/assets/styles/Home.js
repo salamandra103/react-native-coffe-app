@@ -6,7 +6,6 @@ const windowHeight = Dimensions.get('window').height;
 
 export const style = StyleSheet.create({
     scrollContainer: {
-        ...styleScroll.container,
         paddingTop: 48,
     },
     searchContainer: {

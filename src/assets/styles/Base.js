@@ -5,7 +5,6 @@ const windowHeight = Dimensions.get('window').height;
 
 export const styleCaption = StyleSheet.create({
     container: {
-        marginHorizontal: 30,
         marginBottom: 11,
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -53,6 +52,9 @@ export const styleScroll = StyleSheet.create({
 });
 
 export const styleGrid = StyleSheet.create({
+    container: {
+        paddingHorizontal: 30,
+    },
     row: {
         flexDirection: 'row',
     },

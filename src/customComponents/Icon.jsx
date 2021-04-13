@@ -62,7 +62,7 @@ const Icon = (props) => {
                 });
             }
         }
-    });
+    }, []);
 
     return icon;
 };
