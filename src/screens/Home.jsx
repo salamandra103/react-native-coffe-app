@@ -13,11 +13,22 @@ import HomeItem2 from '@/assets/images/home-item-2.png';
 import {style} from '@/assets/styles/Home.js';
 import {styleCaption, styleScroll, styleGrid} from '@/assets/styles/Base.js';
 
+import Product from '@/components/Product';
+
+
+
 const Home = ({navigation}) => {
 
     const [search, setSearch] = useState('');
 
     let arr = [1,1,1,1,1];
+
+    const openModal = (component, _props) => {
+        navigation.navigate('Modal', {
+            component,
+            props: _props,
+        });
+    };
 
     return (
         <>
@@ -39,10 +50,12 @@ const Home = ({navigation}) => {
                 </View>
 
                 <View style={style.menuContainer}>
-                    <View style={style.menuItem}>
-                        <Icon style={style.menuIcon} path="@/assets/images/svg/home-menu/1.svg"/>
-                        <MyText style={style.menuText}>VIP</MyText>
-                    </View>
+                    <TouchableWithoutFeedback onPress={() => openModal(Product, {id: 1, name: '2'})}>
+                        <View style={style.menuItem} >
+                            <Icon style={style.menuIcon} path="@/assets/images/svg/home-menu/1.svg"/>
+                            <MyText style={style.menuText}>VIP</MyText>
+                        </View>
+                    </TouchableWithoutFeedback>
                     <View style={style.menuItem}>
                         <Icon style={style.menuIcon} path="@/assets/images/svg/home-menu/2.svg"/>
                         <MyText style={style.menuText}>Seasonal Fresh</MyText>

@@ -12,6 +12,9 @@
   "dependencies": {
     "@babel/eslint-parser": "^7.13.14",
     "@react-native-community/masked-view": "^0.1.10",
+    "@react-native-community/push-notification-ios": "^1.8.0",
+    "@react-native-firebase/app": "^12.1.0",
+    "@react-native-firebase/messaging": "^12.1.0",
     "@react-navigation/bottom-tabs": "^5.11.9",
     "@react-navigation/drawer": "^5.12.5",
     "@react-navigation/native": "^5.9.4",
@@ -21,6 +24,7 @@
     "react-native": "0.64.0",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-linear-gradient": "^2.5.6",
+    "react-native-push-notification": "^7.4.0",
     "react-native-reanimated": "^2.1.0",
     "react-native-safe-area-context": "^3.2.0",
     "react-native-screens": "^3.0.0",

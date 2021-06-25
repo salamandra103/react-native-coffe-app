@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "417136773023",
+    "project_id": "react-cofee-app",
+    "storage_bucket": "react-cofee-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:417136773023:android:6e2f469932c991178edfaa",
+        "android_client_info": {
+          "package_name": "com.reactcoffeapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "417136773023-32dh6usir79lelquikm43hnp5i0rfrd0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.reactcoffeapp",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "417136773023-aubvtckh87at8cn5ndqpc0d839afei4m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFlWRACJpgLov4hbFGBt2JbZYai_mxI4I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "417136773023-aubvtckh87at8cn5ndqpc0d839afei4m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
